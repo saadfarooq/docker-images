@@ -1,0 +1,17 @@
+web:
+  build: .
+  ports: 
+    - 8111:8111
+# volumes:
+#   - config/:/root/.BuildServer
+#   links:
+#     - db
+# db:
+#   image: orchardup/mysql
+#   ports:
+#     - 3306:3306
+#   command: 
+#   environment:
+#     MYSQL_DATABASE: ceeo_teamcity
+#     MYSQL_USER: admin
+#     MYSQL_PASSWORD: nopass

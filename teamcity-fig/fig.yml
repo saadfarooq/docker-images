@@ -1,0 +1,9 @@
+server:
+  image: saad/teamcity-server
+  ports: 
+    - 8111:8111
+  links:
+    - agent1
+  hostname: teamcity
+agent1:
+  build: .
