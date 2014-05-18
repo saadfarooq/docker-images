@@ -1,0 +1,20 @@
+app:
+  build: .
+  volumes:
+    - app/:/app
+    - logs/:/var/log/apache2
+  ports:
+    - "80:80"
+    - "8000:8000"
+  environment:
+    APACHE_WSGI_FILE=django.wsgi
+  links:
+    - db
+db:
+  image: orchardup/postgresql
+  ports:
+    - 5432
+  environment:
+    POSTGRESQL_DB: askbot_db_name
+    POSTGRESQL_USER: askbot_db_user
+    POSTGRESQL_PASS: askbot_db_pass

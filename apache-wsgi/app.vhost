@@ -1,0 +1,25 @@
+WSGISocketPrefix /var/run/wsgi
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@mydomain
+    ServerName mydomain.com
+    DocumentRoot ${APACHE_DOC_ROOT}
+
+    WSGIDaemonProcess app user=www-data group=www-data threads=5
+    # WSGIDaemonProcess app
+    WSGIProcessGroup app
+    # WSGIScriptAlias / ${APACHE_DOC_ROOT}/${APACHE_WSGI_FILE}
+    WSGIScriptAlias / ${APACHE_DOC_ROOT}/${APACHE_WSGI_FILE}
+    <Directory ${APACHE_DOC_ROOT}>
+        <Files ${APACHE_WSGI_FILE}>
+            Require all granted
+        </Files>
+    #     WSGIProcessGroup application
+    #     WSGIApplicationGroup %{GLOBAL}
+    #     Order deny,allow
+    #     Allow from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    
+</VirtualHost>
