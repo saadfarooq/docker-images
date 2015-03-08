@@ -1,0 +1,20 @@
+web:
+    image: saadfarooq/barkeep
+    links:
+        - db
+        - db:mysql
+        - redis
+    ports:
+        - "8040:8040"
+    volumes:
+        - ssh_keys:/root/.ssh
+        - repos:/root/barkeep_repos
+    environment:
+        MYSQL_ROOT_PASSWORD: 'something'
+db:
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: 'something'
+        MYSQL_DATABASE: 'barkeep'
+redis:
+    image: redis
