@@ -1,0 +1,14 @@
+version: '2.0'
+services:
+    dpd:
+        image: saadfarooq/deployd
+        ports:
+            - "3000:3000"
+        environment: 
+            - MONGO_SERVER=mongo
+        links:
+            - db:mongo
+        volumes: 
+            - ./app:/app
+    db:
+        image: mongo
