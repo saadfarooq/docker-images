@@ -1,7 +1,9 @@
 FROM    node
 MAINTAINER  Saad Farooq <sa@dfarooq.com>
 RUN     npm install -g deployd
-EXPOSE  8000
+EXPOSE  3000
 VOLUME  ["/app"]
 WORKDIR /app
-CMD     ["dpd"]
+ADD app.js /app.js
+RUN mkdir -p /app/resources
+CMD ["node", "/app.js"]
