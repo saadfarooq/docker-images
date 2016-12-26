@@ -1,4 +1,4 @@
-This image runs a Deployd [www.deployd.com](www.deployd.com) server as a node module. 
+This image runs a [Deployd](http://www.deployd.com) server as a node module. 
 Mongodb access is configured through environment variables.
 
 Environment variables:
@@ -37,3 +37,11 @@ Sample Usage:
         -v $PWD:/app \
         -p 3000:3000 \
         saadfarooq/deployd
+
+Production Keys:
+----------------
+If you are using the production environment, you will need a key to access the dashboard.
+To generate and use a production dashboard key for a running container, do the following:
+
+    docker exec [container-name] dpd keygen
+    docker exec [container-name] dpd showkey
